@@ -2,7 +2,7 @@
 
 ![logotipo-readme-1](https://user-images.githubusercontent.com/92796645/213310862-93355a74-4c93-44f2-bcbb-e3e9956116e0.jpg)
 
-> Package in Dart to automate the creation of boilerplates, assets, folder structures etc for Flutter via CLI.
+> Dart package to automate the creation of boilerplates, assets, folder structures etc for Flutter via CLI.
 
 ### Go To:
   - [Tutorial](#-tutorial)
