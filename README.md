@@ -1,5 +1,7 @@
 # Magus
 
+![logotipo-readme-1](https://user-images.githubusercontent.com/92796645/213289150-fc14fc96-549f-4779-bbb8-5613f5f5a2a2.jpg)
+
 > Package em Dart para automatizar criação de boilerplates, assets, estruturas de pastas etc para Flutter.
 
 ### Ir para:
