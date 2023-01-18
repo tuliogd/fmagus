@@ -1,4 +1,4 @@
-name: magus
+name: fmagus
 description: Package em Dart para automatizar criação de boilerplates, assets, estruturas de pastas etc para Flutter.
 version: 0.0.1
 homepage: https://github.com/tuliogd/magus

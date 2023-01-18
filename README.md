@@ -1,4 +1,4 @@
-# Magus
+# FMagus
 
 ![logotipo-readme-1](https://user-images.githubusercontent.com/92796645/213289150-fc14fc96-549f-4779-bbb8-5613f5f5a2a2.jpg)
 
