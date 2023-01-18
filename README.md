@@ -1,6 +1,6 @@
 # FMagus
 
-![logotipo-readme-1](https://user-images.githubusercontent.com/92796645/213289150-fc14fc96-549f-4779-bbb8-5613f5f5a2a2.jpg)
+![logotipo-readme-1](https://user-images.githubusercontent.com/92796645/213310862-93355a74-4c93-44f2-bcbb-e3e9956116e0.jpg)
 
 > Package em Dart para automatizar criação de boilerplates, assets, estruturas de pastas etc para Flutter.
 
