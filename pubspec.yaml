@@ -1,6 +1,6 @@
 name: fmagus
 description: Package em Dart para automatizar criação de boilerplates, assets, estruturas de pastas etc para Flutter.
-version: 0.0.1
+version: 0.1.0
 homepage: https://github.com/tuliogd/fmagus
 
 environment:

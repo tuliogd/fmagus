@@ -6,9 +6,12 @@
 
 ### Go To:
 
+* [v0.1.0](#-v010)
 * [v0.0.1](#-v001)
 
 ---
 
+### 🚀 v0.1.0
+* Build command to generate image assets of all sizes;
 ### 🚀 v0.0.1
 * Build command to compile the project;
