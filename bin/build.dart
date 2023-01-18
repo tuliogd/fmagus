@@ -1,5 +1,5 @@
 import 'package:args/args.dart';
-import 'package:magus/src/functions/build_app_function.dart';
+import 'package:fmagus/src/functions/build_app_function.dart';
 
 void main(List<String> args) {
   final ArgParser argParser = ArgParser();
