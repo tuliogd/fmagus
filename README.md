@@ -6,7 +6,7 @@
 
 ### Go To:
   - [Tutorial](#-tutorial)
-  - [Version History](#️-version-history)
+  - [Version History](#%EF%B8%8F-version-history)
   - [License](#-license)
 
 ---
