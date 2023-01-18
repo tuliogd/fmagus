@@ -2,12 +2,12 @@ import 'dart:io';
 
 import 'package:process_run/shell_run.dart';
 
-/// Função para compilar o App
+/// Function to build the App.
 ///
-/// Parâmetros:
-/// - [String] target: Plataforma na qual o App será compilado.
-/// - [String] type: Tipo de build (apk, appBundle, ipa, canvaskit etc).
-/// - [String] obfuscate: Ofuscar ou não o código do App (true/false).
+/// Parameters:
+/// - [String] target: The target to build (android, ios, web etc).
+/// - [String] type: The type of build (apk, appbundle, ipa etc).
+/// - [String] obfuscate: Obfuscate or not the App code (true or false).
 Future<void> buildApp({
   required String target,
   required String type,
@@ -21,9 +21,9 @@ Future<void> buildApp({
 
 
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                                🧙 MAGUS 🧙                                 ║
+║                                🧙 FMAGUS 🧙                                ║
 ╠════════════════════════════════════════════════════════════════════════════╣
-║ Build concluída com êxito!                                                 ║
+║                        Build completed successfully!                       ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ''';
 
@@ -44,7 +44,7 @@ Future<void> buildApp({
               tipo = 'AppBundle';
               type = 'appbundle';
 
-              print('Type não identificado. Utilizando o padrão: $tipo');
+              print('Type not identified. Using default: $tipo');
             }
             break;
         }
@@ -54,9 +54,9 @@ Future<void> buildApp({
 
 
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                                🧙 MAGUS 🧙                                 ║
+║                                🧙 FMAGUS 🧙                                ║
 ╠════════════════════════════════════════════════════════════════════════════╣
-║                       Iniciando building para Android                      ║
+║                       Starting android App Building...                     ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 Obfuscate: $obfuscate
@@ -65,18 +65,18 @@ Type: $tipo
 
         print(start);
 
-        print('\n\nLimpando cache do Flutter...');
+        print('\n\nClearing Flutter\'s cache...');
         Shell shell = Shell();
         await shell.run('flutter clean');
-        print('\nLimpeza concluída.\n\n');
+        print('\nCleaning completed.\n\n');
 
-        print('Baixando os plugins e packages...');
+        print('Downloading plugins and packages...');
         await shell.run('flutter pub get');
-        print('Download dos plugins e packages completados.\n\n');
+        print('Download of plugins and packages completed.\n\n');
 
-        print('Iniciando building...');
+        print('Start building...');
         await shell.run('flutter build $type $obfuscateString --release');
-        print('\nBuild concluída.');
+        print('\nBuilding completed.');
 
         print(end);
 
@@ -89,9 +89,9 @@ Type: $tipo
 
 
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                                🧙 MAGUS 🧙                                 ║
+║                                🧙 FMAGUS 🧙                                ║
 ╠════════════════════════════════════════════════════════════════════════════╣
-║                       Iniciando building para iOS                          ║
+║                         Starting iOS App Building..                        ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 Obfuscate: $obfuscate
@@ -100,19 +100,19 @@ Type: iOS Package App Store (IPA)
 
         print(start);
 
-        print('\n\nLimpando cache do Flutter...');
+        print('\n\nClearing Flutter\'s cache...');
         Shell shell = Shell();
         await shell.run('flutter clean');
-        print('\nLimpeza concluída.\n\n');
+        print('\nCleaning completed.\n\n');
 
-        print('Baixando os plugins e packages...');
+        print('Downloading plugins and packages...');
         await shell.run('flutter pub get');
-        print('\nDownload dos plugins e packages completados.\n\n');
+        print('\nDownload of plugins and packages completed.\n\n');
 
-        print('Iniciando building...');
+        print('Start building...');
 
         await shell.run('flutter build ipa $obfuscateString --release');
-        print('\nBuild concluída.');
+        print('\nBuilding completed.');
 
         print(end);
 
@@ -140,7 +140,7 @@ Type: iOS Package App Store (IPA)
               tipo = 'CanvasKit';
               type = 'canvaskit';
 
-              print('Type não identificado. Utilizando o padrão: $tipo');
+              print('Type not identified. Using default: $tipo');
             }
             break;
         }
@@ -150,9 +150,9 @@ Type: iOS Package App Store (IPA)
 
 
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                                🧙 MAGUS 🧙                                 ║
+║                                🧙 FMAGUS 🧙                                ║
 ╠════════════════════════════════════════════════════════════════════════════╣
-║                       Iniciando building para Web                          ║
+║                         Starting Web App Building...                       ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 Type: $tipo
@@ -160,18 +160,18 @@ Type: $tipo
 
         print(start);
 
-        print('\n\nLimpando cache do Flutter...');
+        print('\n\nClearing Flutter\'s cache...');
         Shell shell = Shell();
         await shell.run('flutter clean');
-        print('\nLimpeza concluída.\n\n');
+        print('\nCleaning completed.\n\n');
 
-        print('Baixando os plugins e packages...');
+        print('Downloading plugins and packages...');
         await shell.run('flutter pub get');
-        print('Download dos plugins e packages completados.\n\n');
+        print('Download of plugins and packages completed.\n\n');
 
-        print('Iniciando building...');
+        print('Start building...');
         await shell.run('flutter build web --web-renderer $type --release');
-        print('\nBuild concluída.');
+        print('\nBuilding completed.');
 
         print(end);
 
@@ -184,9 +184,9 @@ Type: $tipo
 
 
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                                🧙 MAGUS 🧙                                 ║
+║                                🧙 FMAGUS 🧙                                ║
 ╠════════════════════════════════════════════════════════════════════════════╣
-║                       Iniciando building para macOS                        ║
+║                        Starting macOS App Building...                      ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 Obfuscate: $obfuscate
@@ -194,18 +194,18 @@ Obfuscate: $obfuscate
 
         print(start);
 
-        print('\n\nLimpando cache do Flutter...');
+        print('\n\nClearing Flutter\'s cache...');
         Shell shell = Shell();
         await shell.run('flutter clean');
-        print('\nLimpeza concluída.\n\n');
+        print('\nCleaning completed.\n\n');
 
-        print('Baixando os plugins e packages...');
+        print('Downloading plugins and packages...');
         await shell.run('flutter pub get');
-        print('Download dos plugins e packages completados.\n\n');
+        print('Download of plugins and packages completed.\n\n');
 
-        print('Iniciando building...');
+        print('Start building...');
         await shell.run('flutter build macos $obfuscateString --release');
-        print('\nBuild concluída.');
+        print('\nBuilding completed.');
 
         print(end);
 
@@ -218,27 +218,27 @@ Obfuscate: $obfuscate
 
 
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                                🧙 MAGUS 🧙                                 ║
+║                                🧙 FMAGUS 🧙                                ║
 ╠════════════════════════════════════════════════════════════════════════════╣
-║                       Iniciando building para Windows                      ║
+║                        Starting Windows App Building...                    ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 ''';
 
         print(start);
 
-        print('\n\nLimpando cache do Flutter...');
+        print('\n\nClearing Flutter\'s cache...');
         Shell shell = Shell();
         await shell.run('flutter clean');
-        print('\nLimpeza concluída.\n\n');
+        print('\nCleaning completed.\n\n');
 
-        print('Baixando os plugins e packages...');
+        print('Downloading plugins and packages...');
         await shell.run('flutter pub get');
-        print('Download dos plugins e packages completados.\n\n');
+        print('Download of plugins and packages completed.\n\n');
 
-        print('Iniciando building...');
+        print('Start building...');
         await shell.run('flutter build windows --release');
-        print('\nBuild concluída.');
+        print('\nBuilding completed.');
 
         print(end);
 
@@ -251,27 +251,27 @@ Obfuscate: $obfuscate
 
 
 ╔════════════════════════════════════════════════════════════════════════════╗
-║                                🧙 MAGUS 🧙                                 ║
+║                                🧙 FMAGUS 🧙                                ║
 ╠════════════════════════════════════════════════════════════════════════════╣
-║                       Iniciando building para Linux                        ║
+║                         Starting Linux App Building...                     ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 ''';
 
         print(start);
 
-        print('\n\nLimpando cache do Flutter...');
+        print('\n\nClearing Flutter\'s cache...');
         Shell shell = Shell();
         await shell.run('flutter clean');
-        print('\nLimpeza concluída.\n\n');
+        print('\nCleaning completed.\n\n');
 
-        print('Baixando os plugins e packages...');
+        print('Downloading plugins and packages...');
         await shell.run('flutter pub get');
-        print('Download dos plugins e packages completados.\n\n');
+        print('Download of plugins and packages completed.\n\n');
 
-        print('Iniciando building...');
+        print('Start building...');
         await shell.run('flutter build linux --release');
-        print('\nBuild concluída.');
+        print('\nBuilding completed.');
 
         print(end);
 
@@ -279,7 +279,7 @@ Obfuscate: $obfuscate
       }
     default:
       {
-        print('\nO Target é inválido.');
+        print('\nInvalid target.');
         exit(2);
       }
   }
