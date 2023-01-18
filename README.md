@@ -11,7 +11,7 @@
 
 ---
 
-## TUTORIAL
+## 🤓 Tutorial
 > Under construction...
 
 ## 🕰️ Version History
