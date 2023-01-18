@@ -6,8 +6,9 @@
 
 ### Ir Para:
 
-* [v0.0.0](#-v000)
+* [v0.0.1](#-v001)
 
 ---
 
-### 🚀 v0.0.0
+### 🚀 v0.0.1
+* Comando para buildar o projeto;
