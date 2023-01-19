@@ -1,6 +1,6 @@
 import 'dart:io';
 
-/// Function to exhibit the help of the commands
+/// Function to exhibit the table of commands
 void help() {
   print(_commandTable);
 
@@ -44,6 +44,9 @@ String get _commandTable => '''
 ║        fmagus:create_routegen       ║     Creates a RouteGenerator file.   ║
 ╠════════════════════════════════════════════════════════════════════════════╣
 ║         fmagus:theme_configs        ║     Creates a ThemeConfigs file.     ║
+╠════════════════════════════════════════════════════════════════════════════╣
+║    fmagus:hive_settings_repository  ║     Creates a SettingsRepository     ║
+║                                     ║     with Hive.                       ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 ''';
