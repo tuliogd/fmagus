@@ -12,6 +12,7 @@ Future<void> generateImageAsset({
   required String assetName,
 }) async {
   _checkExists(path);
+
   final Image image = decodeImage(File(path).readAsBytesSync())!;
 
   print(_start);
@@ -19,7 +20,6 @@ Future<void> generateImageAsset({
   _createDirectories();
 
   double newWidth;
-
   newWidth = _generate(image, assetName, 4, null);
   newWidth = _generate(image, assetName, 3, newWidth);
   newWidth = _generate(image, assetName, 2, newWidth);
