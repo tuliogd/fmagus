@@ -3,12 +3,18 @@ import 'dart:io';
 import 'package:process_run/shell_run.dart';
 
 /// Function to add MobX Packages
-Future<void> mobx() async {
+/// Parameters:
+/// - [String] generator: Whether to add the generator or not.
+Future<void> hive({
+  required String generator,
+}) async {
   final Shell shell = Shell();
 
   print(_start);
 
-  await _importMobx(shell);
+  bool gen = _identifyGenerator(generator);
+
+  await _importHive(shell, gen);
 
   print(_end);
 
@@ -24,7 +30,7 @@ String get _start => '''
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║                                🧙 FMAGUS 🧙                                ║
 ╠════════════════════════════════════════════════════════════════════════════╣
-║                          Starting Importing MobX...                        ║
+║                          Starting Importing Hive...                        ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ''';
 
@@ -35,16 +41,33 @@ String get _end => '''
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║                                🧙 FMAGUS 🧙                                ║
 ╠════════════════════════════════════════════════════════════════════════════╣
-║                    MobX Importing completed successfully!                  ║
+║                    Hive Importing completed successfully!                  ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 ''';
 
 //+ FUNCTIONS
-Future<void> _importMobx(Shell shell) async {
+Future<void> _importHive(Shell shell, bool generator) async {
   print('\n\nImporting...\n');
-  await shell.run('flutter pub add mobx');
-  await shell.run('flutter pub add flutter_mobx');
-  await shell.run('flutter pub add -d mobx_codegen');
-  await shell.run('flutter pub add -d build_runner');
+  await shell.run('flutter pub add hive');
+  await shell.run('flutter pub add hive_flutter');
+
+  if (generator) {
+    await shell.run('flutter pub add -d hive_generator');
+    await shell.run('flutter pub add -d build_runner');
+  }
+
   print('Importing completed.');
+}
+
+bool _identifyGenerator(String generator) {
+  if (generator == 'true') {
+    return true;
+  } else if (generator == 'false') {
+    return false;
+  } else {
+    print(
+      '\nThe generator parameter was not recognized. Using default: false\n',
+    );
+    return false;
+  }
 }

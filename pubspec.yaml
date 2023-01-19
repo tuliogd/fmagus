@@ -1,5 +1,5 @@
 name: fmagus
-description: Dart package to automate the creation of boilerplates, assets, folder structures etc for Flutter via CLI.
+description: Dart package to automate the boring work, like creating assets, folder structures, importing packages etc for Flutter via CLI.
 version: 0.1.0
 homepage: https://github.com/tuliogd/fmagus
 
