@@ -7,16 +7,108 @@ import 'package:process_run/shell_run.dart';
 /// Parameters:
 /// - [String] target: The target to build (android, ios, web etc).
 /// - [String] type: The type of build (apk, appbundle, ipa etc).
-/// - [String] obfuscate: Obfuscate or not the App code (true or false).
+/// - [String] obfuscate: Obfuscate the App code (true or false).
+/// - [String] debugInfo: Directory to save the debug info.
 Future<void> buildApp({
   required String target,
   required String type,
-  String? obfuscate,
+  required String obfuscate,
+  required String debugInfo,
 }) async {
-  String obfuscateString =
-      obfuscate == 'true' ? '--obfuscate --split-debug-info=debug' : '';
+  final String obfuscateString = _obfuscateString(obfuscate, debugInfo);
+  final Shell shell = Shell();
+  late final String tipo;
 
-  String end = '''
+  switch (target) {
+    case 'android':
+      {
+        tipo = _identifyType(target, type);
+        type = tipo.toLowerCase();
+
+        print(_startAndroidString(obfuscate, tipo));
+
+        await _flutterClean(shell);
+        await _flutterPubGet(shell);
+        await _flutterBuild(shell, '$type $obfuscateString --release');
+
+        print(_end);
+
+        exit(0);
+      }
+    case 'ios':
+      {
+        print(_startIOSString(obfuscate));
+
+        await _flutterClean(shell);
+        await _flutterPubGet(shell);
+        await _flutterBuild(shell, 'ipa $obfuscateString --release');
+
+        print(_end);
+
+        exit(0);
+      }
+    case 'web':
+      {
+        String tipo = _identifyType(target, type);
+        type = tipo.toLowerCase();
+
+        print(_startWebString(tipo));
+
+        await _flutterClean(shell);
+        await _flutterPubGet(shell);
+        await _flutterBuild(shell, 'web --web-renderer $type --release');
+
+        print(_end);
+
+        exit(0);
+      }
+    case 'macos':
+      {
+        print(_startMacOSString(obfuscate));
+
+        await _flutterClean(shell);
+        await _flutterPubGet(shell);
+        await _flutterBuild(shell, 'macos $obfuscateString --release');
+
+        print(_end);
+
+        exit(0);
+      }
+    case 'windows':
+      {
+        print(_startWindowsString);
+
+        await _flutterClean(shell);
+        await _flutterPubGet(shell);
+        await _flutterBuild(shell, 'windows --release');
+
+        print(_end);
+
+        exit(0);
+      }
+    case 'linux':
+      {
+        print(_startLinuxString);
+
+        await _flutterClean(shell);
+        await _flutterPubGet(shell);
+        await _flutterBuild(shell, 'linux --release');
+
+        print(_end);
+
+        exit(0);
+      }
+    default:
+      {
+        print('\nInvalid target.');
+        exit(2);
+      }
+  }
+}
+
+//? PRIVATE
+//+ GETTERS
+String get _end => '''
 
 
 
@@ -27,29 +119,32 @@ Future<void> buildApp({
 ╚════════════════════════════════════════════════════════════════════════════╝
 ''';
 
-  switch (target) {
-    case 'android':
-      {
-        String tipo;
+String get _startWindowsString => '''
 
-        switch (type) {
-          case 'apk':
-            tipo = 'APK';
-            break;
-          case 'appbundle':
-            tipo = 'AppBundle';
-            break;
-          default:
-            {
-              tipo = 'AppBundle';
-              type = 'appbundle';
 
-              print('Type not identified. Using default: $tipo');
-            }
-            break;
-        }
 
-        String start = '''
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                🧙 FMAGUS 🧙                                ║
+╠════════════════════════════════════════════════════════════════════════════╣
+║                        Starting Windows App Building...                    ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+''';
+
+String get _startLinuxString => '''
+
+
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                🧙 FMAGUS 🧙                                ║
+╠════════════════════════════════════════════════════════════════════════════╣
+║                         Starting Linux App Building...                     ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+''';
+
+//+ FUNCTIONS
+String _startAndroidString(String obfuscate, String tipo) => '''
 
 
 
@@ -63,28 +158,7 @@ Obfuscate: $obfuscate
 Type: $tipo
 ''';
 
-        print(start);
-
-        print('\n\nClearing Flutter\'s cache...');
-        Shell shell = Shell();
-        await shell.run('flutter clean');
-        print('\nCleaning completed.\n\n');
-
-        print('Downloading plugins and packages...');
-        await shell.run('flutter pub get');
-        print('Download of plugins and packages completed.\n\n');
-
-        print('Start building...');
-        await shell.run('flutter build $type $obfuscateString --release');
-        print('\nBuilding completed.');
-
-        print(end);
-
-        exit(0);
-      }
-    case 'ios':
-      {
-        String start = '''
+String _startIOSString(String obfuscate) => '''
 
 
 
@@ -98,54 +172,7 @@ Obfuscate: $obfuscate
 Type: iOS Package App Store (IPA)
 ''';
 
-        print(start);
-
-        print('\n\nClearing Flutter\'s cache...');
-        Shell shell = Shell();
-        await shell.run('flutter clean');
-        print('\nCleaning completed.\n\n');
-
-        print('Downloading plugins and packages...');
-        await shell.run('flutter pub get');
-        print('\nDownload of plugins and packages completed.\n\n');
-
-        print('Start building...');
-
-        await shell.run('flutter build ipa $obfuscateString --release');
-        print('\nBuilding completed.');
-
-        print(end);
-
-        exit(0);
-      }
-    case 'web':
-      {
-        String tipo;
-
-        switch (type) {
-          case 'canvaskit':
-            tipo = 'CanvasKit';
-            break;
-          case 'html':
-            tipo = 'HTML';
-            break;
-          case 'appbundle':
-            {
-              tipo = 'CanvasKit';
-              type = 'canvaskit';
-            }
-            break;
-          default:
-            {
-              tipo = 'CanvasKit';
-              type = 'canvaskit';
-
-              print('Type not identified. Using default: $tipo');
-            }
-            break;
-        }
-
-        String start = '''
+String _startWebString(String tipo) => '''
 
 
 
@@ -158,28 +185,7 @@ Type: iOS Package App Store (IPA)
 Type: $tipo
 ''';
 
-        print(start);
-
-        print('\n\nClearing Flutter\'s cache...');
-        Shell shell = Shell();
-        await shell.run('flutter clean');
-        print('\nCleaning completed.\n\n');
-
-        print('Downloading plugins and packages...');
-        await shell.run('flutter pub get');
-        print('Download of plugins and packages completed.\n\n');
-
-        print('Start building...');
-        await shell.run('flutter build web --web-renderer $type --release');
-        print('\nBuilding completed.');
-
-        print(end);
-
-        exit(0);
-      }
-    case 'macos':
-      {
-        String start = '''
+String _startMacOSString(String obfuscate) => '''
 
 
 
@@ -192,95 +198,71 @@ Type: $tipo
 Obfuscate: $obfuscate
 ''';
 
-        print(start);
-
-        print('\n\nClearing Flutter\'s cache...');
-        Shell shell = Shell();
-        await shell.run('flutter clean');
-        print('\nCleaning completed.\n\n');
-
-        print('Downloading plugins and packages...');
-        await shell.run('flutter pub get');
-        print('Download of plugins and packages completed.\n\n');
-
-        print('Start building...');
-        await shell.run('flutter build macos $obfuscateString --release');
-        print('\nBuilding completed.');
-
-        print(end);
-
-        exit(0);
-      }
-    case 'windows':
-      {
-        String start = '''
-
-
-
-╔════════════════════════════════════════════════════════════════════════════╗
-║                                🧙 FMAGUS 🧙                                ║
-╠════════════════════════════════════════════════════════════════════════════╣
-║                        Starting Windows App Building...                    ║
-╚════════════════════════════════════════════════════════════════════════════╝
-
-''';
-
-        print(start);
-
-        print('\n\nClearing Flutter\'s cache...');
-        Shell shell = Shell();
-        await shell.run('flutter clean');
-        print('\nCleaning completed.\n\n');
-
-        print('Downloading plugins and packages...');
-        await shell.run('flutter pub get');
-        print('Download of plugins and packages completed.\n\n');
-
-        print('Start building...');
-        await shell.run('flutter build windows --release');
-        print('\nBuilding completed.');
-
-        print(end);
-
-        exit(0);
-      }
-    case 'linux':
-      {
-        String start = '''
-
-
-
-╔════════════════════════════════════════════════════════════════════════════╗
-║                                🧙 FMAGUS 🧙                                ║
-╠════════════════════════════════════════════════════════════════════════════╣
-║                         Starting Linux App Building...                     ║
-╚════════════════════════════════════════════════════════════════════════════╝
-
-''';
-
-        print(start);
-
-        print('\n\nClearing Flutter\'s cache...');
-        Shell shell = Shell();
-        await shell.run('flutter clean');
-        print('\nCleaning completed.\n\n');
-
-        print('Downloading plugins and packages...');
-        await shell.run('flutter pub get');
-        print('Download of plugins and packages completed.\n\n');
-
-        print('Start building...');
-        await shell.run('flutter build linux --release');
-        print('\nBuilding completed.');
-
-        print(end);
-
-        exit(0);
-      }
+String _obfuscateString(String obfuscate, String debugInfo) {
+  switch (obfuscate) {
+    case 'true':
+      return '--obfuscate --split-debug-info=$debugInfo';
+    case 'false':
+      return '';
     default:
       {
-        print('\nInvalid target.');
-        exit(2);
+        print('\nInvalid obfuscate value, using default: true');
+        return '--obfuscate --split-debug-info=$debugInfo';
       }
   }
+}
+
+String _identifyType(String target, String type) {
+  switch (target) {
+    case 'android':
+      {
+        switch (type) {
+          case 'apk':
+            return 'APK';
+          case 'appbundle':
+            return 'AppBundle';
+          default:
+            {
+              print('Type not identified. Using default: AppBundle');
+              return 'AppBundle';
+            }
+        }
+      }
+    case 'web':
+      {
+        switch (type) {
+          case 'canvaskit':
+            return 'CanvasKit';
+          case 'html':
+            return 'HTML';
+          case 'appbundle':
+            return 'CanvasKit';
+          default:
+            {
+              print('\nType not identified. Using default: CanvasKit');
+              return 'CanvasKit';
+            }
+        }
+      }
+    default:
+      return '';
+  }
+}
+
+Future<void> _flutterClean(Shell shell) async {
+  print('\n\nClearing Flutter\'s cache...');
+  await shell.run('flutter clean');
+  print('\nCleaning completed.\n\n');
+}
+
+Future<void> _flutterPubGet(Shell shell) async {
+  print('Downloading plugins and packages...');
+  await shell.run('flutter pub get');
+  print('Download of plugins and packages completed.\n\n');
+}
+
+Future<void> _flutterBuild(Shell shell, String build) async {
+  print('Start building...');
+  await shell.run('flutter build $build');
+  print('\nBuilding completed.');
 }

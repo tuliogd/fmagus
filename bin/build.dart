@@ -19,11 +19,17 @@ void main(List<String> args) {
     defaultsTo: 'true',
   );
 
+  argParser.addOption(
+    'debugInfo',
+    defaultsTo: 'debug',
+  );
+
   ArgResults results = argParser.parse(args);
 
   buildApp(
     target: results['target'].toString().toLowerCase(),
     type: results['type'].toString().toLowerCase(),
     obfuscate: results['obfuscate'].toString().toLowerCase(),
+    debugInfo: results['debugInfo'].toString().toLowerCase(),
   );
 }
