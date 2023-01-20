@@ -79,7 +79,7 @@ class SettingsRepository implements ISettingsRepository {
 //+ FUNCTIONS
 void _createSettingsRepository() {
   print('\n\nCreating ThemeConfigs...\n');
-  Directory('lib/src/repositories/interface').createSync(recursive: true);
+  Directory('lib/src/repositories/interfaces').createSync(recursive: true);
   File('lib/src/repositories/interfaces/settings_repository_interface.dart')
       .writeAsStringSync(
     _settingsRepositoryInterface,
