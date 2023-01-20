@@ -6,6 +6,7 @@
 
 ### Go To:
 
+* [v1.0.3](#-v103)
 * [v1.0.2](#-v102)
 * [v1.0.1](#-v101)
 * [v1.0.0](#-v100)
@@ -13,6 +14,8 @@
 * [v0.0.1](#-v001)
 
 ---
+### 🚀 v1.0.3
+* Correção no HiveSettingsRepositoryFunction;
 ### 🚀 v1.0.2
 * Correção no HiveSettingsRepositoryFunction;
 ### 🚀 v1.0.1
