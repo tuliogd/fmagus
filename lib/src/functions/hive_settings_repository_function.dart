@@ -85,7 +85,7 @@ void _createSettingsRepository() {
     _settingsRepositoryInterface,
     mode: FileMode.writeOnly,
   );
-  File('lib/repositories/settings_repository.dart').writeAsStringSync(
+  File('lib/src/repositories/settings_repository.dart').writeAsStringSync(
     _settingsRepository,
     mode: FileMode.writeOnly,
   );
