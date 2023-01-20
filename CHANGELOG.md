@@ -11,7 +11,8 @@
 * [v0.0.1](#-v001)
 
 ---
-
+### 🚀 v1.0.1
+* Correções de erros de Path;
 ### 🚀 v1.0.0
 * Command to exhibit the command table;
 * Command to clean Flutter cache and download packages and plugins again;
