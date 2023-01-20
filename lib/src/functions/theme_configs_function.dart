@@ -73,7 +73,8 @@ class ThemeConfigs {
 //+ FUNCTIONS
 void _createThemeConfigs() {
   print('\n\nCreating ThemeConfigs...\n');
-  File('lib/theme_configs.dart').writeAsStringSync(
+  Directory('lib/src/configs').createSync(recursive: true);
+  File('lib/src/configs/theme_configs.dart').writeAsStringSync(
     _themeConfigs,
     mode: FileMode.writeOnly,
   );
