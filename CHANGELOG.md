@@ -6,6 +6,7 @@
 
 ### Go To:
 
+* [v1.0.4](#-v104)
 * [v1.0.3](#-v103)
 * [v1.0.2](#-v102)
 * [v1.0.1](#-v101)
@@ -14,12 +15,14 @@
 * [v0.0.1](#-v001)
 
 ---
+### 🚀 v1.0.4
+* Removing some Firebase Packages from Firebase Function;
 ### 🚀 v1.0.3
-* Correção no HiveSettingsRepositoryFunction;
+* HiveSettingsRepositoryFunction fixed;
 ### 🚀 v1.0.2
-* Correção no HiveSettingsRepositoryFunction;
+* HiveSettingsRepositoryFunction fixed;
 ### 🚀 v1.0.1
-* Correções de erros de Path;
+* Path errors fixed;
 ### 🚀 v1.0.0
 * Command to exhibit the command table;
 * Command to clean Flutter cache and download packages and plugins again;

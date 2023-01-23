@@ -45,8 +45,5 @@ Future<void> _importFirebase(Shell shell) async {
   await shell.run('flutter pub add firebase_core');
   await shell.run('flutter pub add firebase_auth');
   await shell.run('flutter pub add cloud_firestore');
-  await shell.run('flutter pub add firebase_storage');
-  await shell.run('flutter pub add cloud_functions');
-  await shell.run('flutter pub add firebase_messaging');
   print('Importing completed.');
 }
