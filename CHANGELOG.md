@@ -6,6 +6,7 @@
 
 ### Go To:
 
+* [v1.0.5](#-v105)
 * [v1.0.4](#-v104)
 * [v1.0.3](#-v103)
 * [v1.0.2](#-v102)
@@ -15,6 +16,8 @@
 * [v0.0.1](#-v001)
 
 ---
+### 🚀 v1.0.5
+* Monthly Update;
 ### 🚀 v1.0.4
 * Removing some Firebase Packages from Firebase Function;
 ### 🚀 v1.0.3
