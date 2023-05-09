@@ -10,6 +10,11 @@ void main(List<String> args) {
   );
 
   argParser.addOption(
+    'configFile',
+    defaultsTo: '',
+  );
+
+  argParser.addOption(
     'type',
     defaultsTo: 'appbundle',
   );
@@ -24,10 +29,11 @@ void main(List<String> args) {
     defaultsTo: 'debug',
   );
 
-  ArgResults results = argParser.parse(args);
+  final ArgResults results = argParser.parse(args);
 
   buildApp(
     target: results['target'].toString().toLowerCase(),
+    configFile: results['configFile'].toString().toLowerCase(),
     type: results['type'].toString().toLowerCase(),
     obfuscate: results['obfuscate'].toString().toLowerCase(),
     debugInfo: results['debugInfo'].toString().toLowerCase(),

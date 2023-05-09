@@ -9,7 +9,7 @@ void main(List<String> args) {
     defaultsTo: 'false',
   );
 
-  ArgResults results = argParser.parse(args);
+  final ArgResults results = argParser.parse(args);
 
   hive(
     generator: results['generator'],

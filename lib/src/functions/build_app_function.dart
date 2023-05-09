@@ -6,11 +6,13 @@ import 'package:process_run/shell_run.dart';
 ///
 /// Parameters:
 /// - [String] target: The target to build (android, ios, web etc).
+/// - [String] configFile: The config file to use (configs.json etc).
 /// - [String] type: The type of build (apk, appbundle, ipa etc).
 /// - [String] obfuscate: Obfuscate the App code (true or false).
 /// - [String] debugInfo: Directory to save the debug info.
 Future<void> buildApp({
   required String target,
+  required String configFile,
   required String type,
   required String obfuscate,
   required String debugInfo,
@@ -29,7 +31,8 @@ Future<void> buildApp({
 
         await _flutterClean(shell);
         await _flutterPubGet(shell);
-        await _flutterBuild(shell, '$type $obfuscateString --release');
+        await _flutterBuild(
+            shell, configFile, '$type $obfuscateString --release');
 
         print(_end);
 
@@ -41,7 +44,8 @@ Future<void> buildApp({
 
         await _flutterClean(shell);
         await _flutterPubGet(shell);
-        await _flutterBuild(shell, 'ipa $obfuscateString --release');
+        await _flutterBuild(
+            shell, configFile, 'ipa $obfuscateString --release');
 
         print(_end);
 
@@ -56,7 +60,8 @@ Future<void> buildApp({
 
         await _flutterClean(shell);
         await _flutterPubGet(shell);
-        await _flutterBuild(shell, 'web --web-renderer $type --release');
+        await _flutterBuild(
+            shell, configFile, 'web --web-renderer $type --release');
 
         print(_end);
 
@@ -68,7 +73,8 @@ Future<void> buildApp({
 
         await _flutterClean(shell);
         await _flutterPubGet(shell);
-        await _flutterBuild(shell, 'macos $obfuscateString --release');
+        await _flutterBuild(
+            shell, configFile, 'macos $obfuscateString --release');
 
         print(_end);
 
@@ -80,7 +86,7 @@ Future<void> buildApp({
 
         await _flutterClean(shell);
         await _flutterPubGet(shell);
-        await _flutterBuild(shell, 'windows --release');
+        await _flutterBuild(shell, configFile, 'windows --release');
 
         print(_end);
 
@@ -92,7 +98,7 @@ Future<void> buildApp({
 
         await _flutterClean(shell);
         await _flutterPubGet(shell);
-        await _flutterBuild(shell, 'linux --release');
+        await _flutterBuild(shell, configFile, 'linux --release');
 
         print(_end);
 
@@ -261,8 +267,9 @@ Future<void> _flutterPubGet(Shell shell) async {
   print('Download of plugins and packages completed.\n\n');
 }
 
-Future<void> _flutterBuild(Shell shell, String build) async {
+Future<void> _flutterBuild(Shell shell, String configFile, String build) async {
   print('Start building...');
-  await shell.run('flutter build $build');
+  await shell.run(
+      'flutter build $build ${configFile.isNotEmpty ? '--dart-define-from-file=$configFile' : ''}');
   print('\nBuilding completed.');
 }

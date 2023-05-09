@@ -14,7 +14,7 @@ void main(List<String> args) {
     mandatory: true,
   );
 
-  ArgResults results = argParser.parse(args);
+  final ArgResults results = argParser.parse(args);
 
   generateImageAsset(
     path: results['path'].toString().toLowerCase(),
