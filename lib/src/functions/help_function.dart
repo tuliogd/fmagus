@@ -15,7 +15,8 @@ String get _commandTable => '''
 ║                                 🧙 FMAGUS 🧙                               ║
 ╠════════════════════════════════════════════════════════════════════════════╣
 ║            fmagus:build             ║                                      ║
-║         --target=platform           ║     Builds the App to the selected   ║
+║         --target=platform           ║                                      ║
+║    --configFile=configs.json/path   ║     Builds the App to the selected   ║
 ║           --type=output             ║     target.                          ║
 ║      --obfuscate=true or false      ║                                      ║
 ║  --debugInfo=debug/info/directory   ║                                      ║
