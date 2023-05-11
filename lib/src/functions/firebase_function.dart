@@ -43,6 +43,7 @@ String get _end => '''
 Future<void> _importFirebase(Shell shell) async {
   print('\n\nImporting...\n');
   await shell.run('flutter pub add firebase_core');
+  await shell.run('flutter pub add firebase_app_check');
   await shell.run('flutter pub add firebase_auth');
   await shell.run('flutter pub add cloud_firestore');
   print('Importing completed.');
