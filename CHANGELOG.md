@@ -6,6 +6,7 @@
 
 ### Go To:
 
+* [v1.1.0](#-v110)
 * [v1.0.6](#-v106)
 * [v1.0.5](#-v105)
 * [v1.0.4](#-v104)
@@ -17,6 +18,9 @@
 * [v0.0.1](#-v001)
 
 ---
+### 🚀 v1.1.0
+* --configFile option added to `build` command;
+* Firebase App Check import added to `firebase` command;
 ### 🚀 v1.0.6
 * Monthly Update;
 ### 🚀 v1.0.5
