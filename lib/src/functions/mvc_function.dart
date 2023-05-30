@@ -46,9 +46,7 @@ void _createAssetsStructure() {
 
 void _createMVCStructure() {
   print('\n\nCreating MVC Directories...\n');
-  Directory('lib/src/models/data').createSync(recursive: true);
-  Directory('lib/src/models/arguments').createSync();
-  Directory('lib/src/models/interfaces').createSync();
+  Directory('lib/src/models').createSync(recursive: true);
   Directory('lib/src/views').createSync();
   Directory('lib/src/controllers').createSync();
   print('Creating completed.\n\n');
