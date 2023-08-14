@@ -4,12 +4,12 @@ version: 1.1.1
 homepage: https://github.com/tuliogd/fmagus
 
 environment:
-  sdk: '>=3.0.2 <4.0.0'
+  sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
-  args: ^2.4.1
-  process_run: ^0.13.0
+  args: ^2.4.2
+  process_run: ^0.13.1
   image: ^4.0.17
 
 dev_dependencies:
-  lints: ^2.0.1
+  lints: ^2.1.1
