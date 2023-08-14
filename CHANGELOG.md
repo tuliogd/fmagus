@@ -20,6 +20,10 @@
 
 ---
 
+### 🚀 v1.1.2
+
+- Monthly Update;
+
 ### 🚀 v1.1.1
 
 - Update to Dart 3.
