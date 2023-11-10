@@ -60,8 +60,9 @@ void _createExtra() {
   Directory('lib/src/configs').createSync();
   Directory('lib/src/services').createSync();
   Directory('lib/src/helpers').createSync();
-  Directory('lib/src/widgets').createSync();
+  Directory('lib/src/common_widgets').createSync();
   Directory('lib/src/constants').createSync();
+  Directory('lib/src/enums').createSync();
   Directory('lib/src/validators').createSync();
   print('Creating completed.');
 }
