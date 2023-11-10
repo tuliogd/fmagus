@@ -20,6 +20,10 @@
 
 ---
 
+### 🚀 v1.1.3
+
+- Periodic Updates;
+
 ### 🚀 v1.1.2
 
 - Monthly Update;
