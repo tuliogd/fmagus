@@ -70,6 +70,22 @@ Future<void> buildApp({
 
         exit(0);
       }
+    case 'wasm':
+      {
+        print(_startWebString('WASM'));
+
+        await _flutterClean(shell);
+        await _flutterPubGet(shell);
+        await _flutterBuild(
+          shell,
+          configFile,
+          'web --$type --release',
+        );
+
+        print(_end);
+
+        exit(0);
+      }
     case 'macos':
       {
         print(_startMacOSString(obfuscate));
