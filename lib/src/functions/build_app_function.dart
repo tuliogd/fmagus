@@ -74,6 +74,8 @@ Future<void> buildApp({
       {
         print(_startWebString('WASM'));
 
+        type = 'wasm';
+
         await _flutterClean(shell);
         await _flutterPubGet(shell);
         await _flutterBuild(
