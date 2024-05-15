@@ -61,7 +61,10 @@ Future<void> buildApp({
         await _flutterClean(shell);
         await _flutterPubGet(shell);
         await _flutterBuild(
-            shell, configFile, 'web --web-renderer $type --release');
+          shell,
+          configFile,
+          'web --web-renderer $type --release --wasm',
+        );
 
         print(_end);
 
