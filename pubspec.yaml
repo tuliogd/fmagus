@@ -1,15 +1,15 @@
 name: fmagus
 description: Dart package to automate the boring work, like creating assets, folder structures, importing packages etc for Flutter via CLI.
-version: 1.2.0
+version: 1.2.1
 homepage: https://github.com/tuliogd/fmagus
 
 environment:
-  sdk: ">=3.4.0 <4.0.0"
+  sdk: ">=3.5.3 <4.0.0"
 
 dependencies:
   args: ^2.5.0
-  process_run: ^0.14.2
-  image: ^4.1.7
+  process_run: ^1.2.1
+  image: ^4.2.0
 
 dev_dependencies:
-  lints: ^4.0.0
+  lints: ^5.0.0
