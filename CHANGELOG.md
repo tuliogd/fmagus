@@ -27,6 +27,14 @@
 
 ---
 
+### 🚀 v1.2.2
+
+- Periodic Updates;
+
+### 🚀 v1.2.1
+
+- Bug fixes;
+
 ### 🚀 v1.2.0
 
 - Added "wasm" option to `build` command;
