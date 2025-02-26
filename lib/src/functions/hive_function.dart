@@ -5,9 +5,7 @@ import 'package:process_run/shell_run.dart';
 /// Function to add MobX Packages
 /// Parameters:
 /// - [String] generator: Whether to add the generator or not.
-Future<void> hive({
-  required String generator,
-}) async {
+Future<void> hive({required String generator}) async {
   final Shell shell = Shell();
 
   print(_start);

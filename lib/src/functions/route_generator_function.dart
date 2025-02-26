@@ -74,9 +74,8 @@ class RouteGenerator {
 void _createRouteGenerator() {
   print('\n\nCreating RouteGenerator...\n');
   Directory('lib/src/app/configs').createSync(recursive: true);
-  File('lib/src/app/configs/route_generator.dart').writeAsStringSync(
-    _routeGenerator,
-    mode: FileMode.writeOnly,
-  );
+  File(
+    'lib/src/app/configs/route_generator.dart',
+  ).writeAsStringSync(_routeGenerator, mode: FileMode.writeOnly);
   print('Creating Completed.');
 }

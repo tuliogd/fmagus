@@ -56,9 +56,8 @@ class HiveConfigs {
 void _createHiveConfigs() {
   print('\n\nCreating HiveConfigs...\n');
   Directory('lib/src/configs').createSync(recursive: true);
-  File('lib/src/configs/hive_configs.dart').writeAsStringSync(
-    _hiveConfigs,
-    mode: FileMode.writeOnly,
-  );
+  File(
+    'lib/src/configs/hive_configs.dart',
+  ).writeAsStringSync(_hiveConfigs, mode: FileMode.writeOnly);
   print('Creating Completed.');
 }

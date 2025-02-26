@@ -32,7 +32,10 @@ Future<void> buildApp({
         await _flutterClean(shell);
         await _flutterPubGet(shell);
         await _flutterBuild(
-            shell, configFile, '$type $obfuscateString --release');
+          shell,
+          configFile,
+          '$type $obfuscateString --release',
+        );
 
         print(_end);
 
@@ -45,7 +48,10 @@ Future<void> buildApp({
         await _flutterClean(shell);
         await _flutterPubGet(shell);
         await _flutterBuild(
-            shell, configFile, 'ipa $obfuscateString --release');
+          shell,
+          configFile,
+          'ipa $obfuscateString --release',
+        );
 
         print(_end);
 
@@ -60,11 +66,7 @@ Future<void> buildApp({
 
         await _flutterClean(shell);
         await _flutterPubGet(shell);
-        await _flutterBuild(
-          shell,
-          configFile,
-          'web --web-renderer $type --release',
-        );
+        await _flutterBuild(shell, configFile, 'web --release');
 
         print(_end);
 
@@ -78,11 +80,7 @@ Future<void> buildApp({
 
         await _flutterClean(shell);
         await _flutterPubGet(shell);
-        await _flutterBuild(
-          shell,
-          configFile,
-          'web --$type --release',
-        );
+        await _flutterBuild(shell, configFile, 'web --$type --release');
 
         print(_end);
 
@@ -95,7 +93,10 @@ Future<void> buildApp({
         await _flutterClean(shell);
         await _flutterPubGet(shell);
         await _flutterBuild(
-            shell, configFile, 'macos $obfuscateString --release');
+          shell,
+          configFile,
+          'macos $obfuscateString --release',
+        );
 
         print(_end);
 
@@ -255,22 +256,6 @@ String _identifyType(String target, String type) {
             }
         }
       }
-    case 'web':
-      {
-        switch (type) {
-          case 'canvaskit':
-            return 'CanvasKit';
-          case 'html':
-            return 'HTML';
-          case 'appbundle':
-            return 'CanvasKit';
-          default:
-            {
-              print('\nType not identified. Using default: CanvasKit');
-              return 'CanvasKit';
-            }
-        }
-      }
     default:
       return '';
   }
@@ -291,6 +276,7 @@ Future<void> _flutterPubGet(Shell shell) async {
 Future<void> _flutterBuild(Shell shell, String configFile, String build) async {
   print('Start building...');
   await shell.run(
-      'flutter build $build ${configFile.isNotEmpty ? '--dart-define-from-file=$configFile' : ''}');
+    'flutter build $build ${configFile.isNotEmpty ? '--dart-define-from-file=$configFile' : ''}',
+  );
   print('\nBuilding completed.');
 }

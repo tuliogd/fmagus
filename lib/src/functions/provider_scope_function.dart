@@ -54,9 +54,8 @@ class ProviderScope extends MultiProvider {
 void _createProviderScope() {
   print('\n\nCreating ProviderScope...\n');
   Directory('lib/src/widgets').createSync(recursive: true);
-  File('lib/src/widgets/provider_scope_widget.dart').writeAsStringSync(
-    _providerScope,
-    mode: FileMode.writeOnly,
-  );
+  File(
+    'lib/src/widgets/provider_scope_widget.dart',
+  ).writeAsStringSync(_providerScope, mode: FileMode.writeOnly);
   print('Creating Completed.');
 }

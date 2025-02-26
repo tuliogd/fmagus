@@ -78,11 +78,9 @@ double _generate(Image image, String assetName, int x, double? newWidth) {
     case 4:
       {
         print('\nGenerating 4.0x image asset...');
-        File('lib/assets/images/4.0x/$assetName.png').writeAsBytesSync(
-          encodePng(
-            image,
-          ),
-        );
+        File(
+          'lib/assets/images/4.0x/$assetName.png',
+        ).writeAsBytesSync(encodePng(image));
         return image.width.toDouble();
       }
     case 3:
